@@ -18,8 +18,13 @@ As non-reference reads are less likely to be captured and to map than those cont
 Generally the BAF data has lower variability and fewer biases than the coverage data and so the most reliable CN calls are for those genes that have a reasonable number of heterozgyous SNPs.  In practice we consider only those genes that have at least 20 informative SNPs when a high sensitivity is required.
 
 [1] - Benjamini Y, Speed TP. Summarizing and correcting the GC content bias in high-throughput sequencing. Nucleic Acids Research. 2012;40(10):e72. doi:10.1093/nar/gks001.
+
 [2] - Robinson MD, Oshlack A 2010. A scaling normalization method for differential expression analysis of RNA-seq data. Genome Biol 11: R25 10.1186/gb-2010-11-3-r25
+
 [3] -   Chen, Y, Lun, ATL, and Smyth, GK (2014). Differential expression analysis of complex RNA-seq experiments using edgeR. In: Statistical Analysis of Next Generation Sequence Data, Somnath Datta and Daniel S Nettleton (eds), Springer, New York
+
 [4] - Benjamini, Yoav; Hochberg, Yosef (1995). "Controlling the false discovery rate: a practical and powerful approach to multiple testing" (PDF). Journal of the Royal Statistical Society, Series B. 57 (1): 289–300. MR 1325392.
+
 [5] - B. N. Howie, P. Donnelly, and J. Marchini (2009) A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. PLoS Genetics 5(6): e1000529
+
 [6] - Martincorena I, Roshan A, Gerstung M, et al. High burden and pervasive positive selection of somatic mutations in normal human skin. Science (New York, NY). 2015;348(6237):880-886. doi:10.1126/science.aaa6806
