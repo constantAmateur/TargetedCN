@@ -1,0 +1,34 @@
+#' Fits all aspects of the difference only model for CN: coverage, BAF, and both combined.
+#'
+#' Calls the various data specific fitting functions to fit and calculate FDRs for differences in total CN, allelic balance and both combined.  This data is then combined and a best guess at the CN state in each region is made.
+#'
+#' @export
+#' @param patMap A data.frame with columns Patient, Sample, and Type. Type should be 'Tumour' and 'Normal'.  Patient is the group designator and Sample identifies individual samples.
+#' @param bafData Data must be a GRanges object with several meta-data columns.  The GRange itself gives the position of each SNP.  Two columns, Group and Region (which typically refer to a "Sample" and "Gene" respectively) give which region and sample the SNP belongs to.  CorrectedPhase should give (as a character) the phase of each SNP and phaseOfMajorAllele should give which phase at that SNP belongs to the chromosome with the highest CN.  MUT_ALT should given the number of reads supporting the mutant allele for the SNP and MUT should give the total number of reads covering the SNP.  Finally, tau, which gives the bias correction factor for each SNP. 
+#' @param counts Table of counts containing the normal and tumour samples to compare.  Rows give the region of interest and columns give the individual samples.
+#' @param chi Table of bias factors containing the same rows (in the same order) as counts and containing the normal and tumour samples to compare.
+#' @param sampleCorrection Named vector, where names are samples and values are the sample correction for composition effects.  Usually the values returned by calcCorrectionFactors.
+#' @param epsilonCut The null hypothesis is that 0.5<epsilon<epsilonCut.  Determine this by looking at the fitted values for epsilon and adjusting so we exclude the exponential at epsilon=0.5.  0.52 seems to work pretty well in most cases.
+#' @param logFC_Cut The log fold-change that you consider to be equivalent to no change.  Calibrate this by looking at the logFC values coming out of the fit and excluding those likely to be normal.  To be really sure, pick out those genes with epsilon < epsilon_cut and plot their logFC (most will be CN neutral).  0.15 seems reasonable in most cases.
+#' @param verbose Print diagnostic messages.
+#' @return A data.frame with three sets of FDR, one for the coverage being different from what we would expect if the total CN was the same as the sample ploidy, one for the BAF being different from what we expect if the alleles were in balance, and one for both types of data being different from what we would expect if the total CN equalled the ploidy and the alleles were in balance.  A number of other columns are also given.
+fitCN = function(patMap,bafData,counts,chi,sampleCorrection,epsilonCut=0.52,logFC_Cut = 0.15,verbose=TRUE) {
+  #Calculate the coverage based FDR
+  if(verbose){
+    message("Testing for change in coverage.")
+  }
+  covp = allCoverageFDR(patMap,counts=counts,chi=chi,sample_correction=sampleCorrection,lfc_cut=logFC_Cut)
+  #Calculate the BAF based FDR
+  if(verbose){
+    message("Testing for change in BAF data.")
+  }
+  bafp = allBAF_FDR(bafData,epsilon_cut = epsilonCut)
+  #Do combined inference
+  if(verbose){
+    message("Testing for change in both coverage and BAF data.")
+  }
+  bafp = allFDR(bafp,patMap,counts=counts,chi=chi,sample_correction=sampleCorrection)
+  #Combine everything together
+  totp = inferCN_State(covp,bafp)
+  return(totp)
+}

@@ -1,0 +1,26 @@
+Package: TCN
+Title: Targeted Copy Number
+Version: 1.0
+Date: 2016-10-18
+Author: Matthew Daniel Young
+Maintainer: Matthew Daniel Young <my4@sanger.ac.uk>
+Description: A package for calling copy number changes from targeted sequencing
+    data.
+Suggests:
+    BSgenome.Hsapiens.UCSC.hg19
+Imports:
+    edgeR,
+    GenomicFiles,
+    Rsamtools,
+    ggplot2,
+    BiocGenerics,
+    Biostrings,
+    GenomeInfoDb,
+    S4Vectors,
+    stats,utils,
+    methods
+Depends:
+    GenomicRanges,
+    IRanges
+License: GPL-2
+RoxygenNote: 5.0.1
