@@ -1,6 +1,13 @@
 # TargetedCN
 A R package to infer copy number states from targeted capture data.
 
+## Using the package
+
+The package can be installed in the standard way using either devtools or install.packages.  Once installed refer to the package documentation for each function for details.  In brief, to use this package you need:
+ - BAM files for tumours and a pool of normals captured with the same bait set from which coverage is calculated.
+ - A GRanges object (from something like a bed file) detailing the capture regions to associate with each gene.
+ - A table of SNPs with counts of reads supporting the reference and alternate allele.
+
 ## Brief description of methods
 
 Due to the difficulty in precisely identifying copy number (CN) states from targeted capture data, we instead aim to classify each captured gene as either CN neutral (i.e., having CN equal to the sample ploidy), amplified (i.e., CN gain), and deleted (i.e., CN loss).  For those genes with many captured single nucleotide polymorphisms (SNPs) that were heterozgyous in the matched normal, we further split this classification into genes with homozygous and heterozgyous loss.  To classify genes into these categories we combined data from the coverage and from the biallelic frequencies at SNPs heterozgyous in the normal (henceforth BAFs).
