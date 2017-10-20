@@ -36,4 +36,4 @@ Generally the BAF data has lower variability and fewer biases than the coverage 
 
 [6] - Martincorena I, Roshan A, Gerstung M, et al. High burden and pervasive positive selection of somatic mutations in normal human skin. Science (New York, NY). 2015;348(6237):880-886. doi:10.1126/science.aaa6806
 
-[7] Tarpey PS, Behjati S, Young MD, et al. The driver landscape of sporadic chordoma. Nat Commun. 2017 Oct 12;8(1):890. doi: 10.1038/s41467-017-01026-0.
+[7] - Tarpey PS, Behjati S, Young MD, et al. The driver landscape of sporadic chordoma. Nat Commun. 2017 Oct 12;8(1):890. doi: 10.1038/s41467-017-01026-0.
