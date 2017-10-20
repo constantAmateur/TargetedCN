@@ -1,5 +1,5 @@
 # TargetedCN
-A R package to infer copy number states from targeted capture data.
+A R package to infer copy number states from targeted capture data.  Used to call CN changes from targeted sequencing data in [7].
 
 ## Using the package
 
@@ -35,3 +35,5 @@ Generally the BAF data has lower variability and fewer biases than the coverage 
 [5] - B. N. Howie, P. Donnelly, and J. Marchini (2009) A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. PLoS Genetics 5(6): e1000529
 
 [6] - Martincorena I, Roshan A, Gerstung M, et al. High burden and pervasive positive selection of somatic mutations in normal human skin. Science (New York, NY). 2015;348(6237):880-886. doi:10.1126/science.aaa6806
+
+[7] Tarpey PS, Behjati S, Young MD, et al. The driver landscape of sporadic chordoma. Nat Commun. 2017 Oct 12;8(1):890. doi: 10.1038/s41467-017-01026-0.
